@@ -16,7 +16,11 @@ class isDivisibleRule implements IRule {
 
 export function calculateFizzBuzz(number: number): string[] {
   const result = [];
-  const fizzBuzzDivisibleRule = new isDivisibleRule({ 3: "Fizz", 5: "Buzz" });
+  const fizzBuzzDivisibleRule = new isDivisibleRule({
+    3: "Fizz",
+    5: "Buzz",
+    7: "Pop",
+  });
   for (let i = 1; i <= number; i++) {
     let stringToAdd = "";
     stringToAdd += fizzBuzzDivisibleRule.applyRule(i, stringToAdd);

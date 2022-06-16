@@ -19,6 +19,18 @@ describe("When printing", () => {
     const result = calculateFizzBuzz(5);
     expect(result).toStrictEqual(["1", "2", "Fizz", "4", "Buzz"]);
   });
+  it("Should print Pop for numbers divisible by 7", () => {
+    const result = calculateFizzBuzz(7);
+    expect(result).toStrictEqual([
+      "1",
+      "2",
+      "Fizz",
+      "4",
+      "Buzz",
+      "Fizz",
+      "Pop",
+    ]);
+  });
   it("Should print FizzBuzz for numbers divisible by both 3 and 5", () => {
     const result = calculateFizzBuzz(20);
     expect(result).toStrictEqual([
@@ -28,14 +40,14 @@ describe("When printing", () => {
       "4",
       "Buzz",
       "Fizz",
-      "7",
+      "Pop",
       "8",
       "Fizz",
       "Buzz",
       "11",
       "Fizz",
       "13",
-      "14",
+      "Pop",
       "FizzBuzz",
       "16",
       "17",
