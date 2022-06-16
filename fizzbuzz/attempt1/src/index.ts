@@ -3,11 +3,11 @@ interface IRule {
 }
 
 class isDivisibleRule implements IRule {
-  private lookup: Record<number, string> = { 3: "Fizz", 5: "Buzz" };
+  constructor(private divisorLookup: Record<number, string>) {}
   applyRule(position: number, input: string): string {
-    for (const lookupKey in this.lookup) {
+    for (const lookupKey in this.divisorLookup) {
       if (position % Number(lookupKey) === 0) {
-        input += this.lookup[lookupKey];
+        input += this.divisorLookup[lookupKey];
       }
     }
     return input;
@@ -16,9 +16,10 @@ class isDivisibleRule implements IRule {
 
 export function calculateFizzBuzz(number: number): string[] {
   const result = [];
+  const fizzBuzzDivisibleRule = new isDivisibleRule({ 3: "Fizz", 5: "Buzz" });
   for (let i = 1; i <= number; i++) {
     let stringToAdd = "";
-    stringToAdd += new isDivisibleRule().applyRule(i, stringToAdd);
+    stringToAdd += fizzBuzzDivisibleRule.applyRule(i, stringToAdd);
     if (stringToAdd === "") {
       stringToAdd = i.toString();
     }
