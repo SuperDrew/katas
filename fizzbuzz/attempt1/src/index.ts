@@ -14,12 +14,15 @@ class isDivisibleRule implements IRule {
   }
 }
 
-export function calculateFizzBuzz(number: number): string[] {
-  const result = [];
-  const fizzBuzzDivisibleRule = new isDivisibleRule({
+export function calculateFizzBuzz(
+  number: number,
+  divisorLookup: Record<number, string> = {
     3: "Fizz",
     5: "Buzz",
-  });
+  }
+): string[] {
+  const result = [];
+  const fizzBuzzDivisibleRule = new isDivisibleRule(divisorLookup);
   for (let i = 1; i <= number; i++) {
     let stringToAdd = "";
     stringToAdd += fizzBuzzDivisibleRule.applyRule(i, stringToAdd);
