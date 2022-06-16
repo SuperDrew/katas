@@ -70,8 +70,8 @@ describe("When using FizzBuzzPop", () => {
       "Pop",
     ]);
   });
-  it("Should print FizzBuzz for numbers divisible by both 3 and 5", () => {
-    const result = calculateDivisorRules(20, FizzBuzzPopDivisorRules);
+  it("Should print FizzBuzz for numbers divisible by both 3 and 5 and FizzPop for 3 and 7", () => {
+    const result = calculateDivisorRules(21, FizzBuzzPopDivisorRules);
     expect(result).toStrictEqual([
       "1",
       "2",
@@ -93,6 +93,7 @@ describe("When using FizzBuzzPop", () => {
       "Fizz",
       "19",
       "Buzz",
+      "FizzPop",
     ]);
   });
 });
