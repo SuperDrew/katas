@@ -1,4 +1,4 @@
-import { calculateFizzBuzz } from "./index";
+import { calculateFizzBuzz, calculateFizzBuzzPop } from "./index";
 
 describe("When supplied with max number to count to", () => {
   it.each([[1], [2], [5]])(
@@ -10,7 +10,7 @@ describe("When supplied with max number to count to", () => {
   );
 });
 
-describe("When printing", () => {
+describe("When using FizzBuzz", () => {
   it("Should print Fizz for numbers divisible by 3", () => {
     const result = calculateFizzBuzz(3);
     expect(result).toStrictEqual(["1", "2", "Fizz"]);
@@ -19,8 +19,43 @@ describe("When printing", () => {
     const result = calculateFizzBuzz(5);
     expect(result).toStrictEqual(["1", "2", "Fizz", "4", "Buzz"]);
   });
+  it("Should print FizzBuzz for numbers divisible by both 3 and 5", () => {
+    const result = calculateFizzBuzz(20);
+    expect(result).toStrictEqual([
+      "1",
+      "2",
+      "Fizz",
+      "4",
+      "Buzz",
+      "Fizz",
+      "7",
+      "8",
+      "Fizz",
+      "Buzz",
+      "11",
+      "Fizz",
+      "13",
+      "14",
+      "FizzBuzz",
+      "16",
+      "17",
+      "Fizz",
+      "19",
+      "Buzz",
+    ]);
+  });
+});
+describe("When using FizzBuzzPop", () => {
+  it("Should print Fizz for numbers divisible by 3", () => {
+    const result = calculateFizzBuzzPop(3);
+    expect(result).toStrictEqual(["1", "2", "Fizz"]);
+  });
+  it("Should print Buzz for numbers divisible by 5", () => {
+    const result = calculateFizzBuzzPop(5);
+    expect(result).toStrictEqual(["1", "2", "Fizz", "4", "Buzz"]);
+  });
   it("Should print Pop for numbers divisible by 7", () => {
-    const result = calculateFizzBuzz(7);
+    const result = calculateFizzBuzzPop(7);
     expect(result).toStrictEqual([
       "1",
       "2",
@@ -32,7 +67,7 @@ describe("When printing", () => {
     ]);
   });
   it("Should print FizzBuzz for numbers divisible by both 3 and 5", () => {
-    const result = calculateFizzBuzz(20);
+    const result = calculateFizzBuzzPop(20);
     expect(result).toStrictEqual([
       "1",
       "2",

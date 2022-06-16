@@ -19,6 +19,23 @@ export function calculateFizzBuzz(number: number): string[] {
   const fizzBuzzDivisibleRule = new isDivisibleRule({
     3: "Fizz",
     5: "Buzz",
+  });
+  for (let i = 1; i <= number; i++) {
+    let stringToAdd = "";
+    stringToAdd += fizzBuzzDivisibleRule.applyRule(i, stringToAdd);
+    if (stringToAdd === "") {
+      stringToAdd = i.toString();
+    }
+    result.push(stringToAdd);
+  }
+  return result;
+}
+
+export function calculateFizzBuzzPop(number: number): string[] {
+  const result = [];
+  const fizzBuzzDivisibleRule = new isDivisibleRule({
+    3: "Fizz",
+    5: "Buzz",
     7: "Pop",
   });
   for (let i = 1; i <= number; i++) {
