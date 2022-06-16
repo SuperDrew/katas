@@ -1,10 +1,14 @@
-import { calculateFizzBuzz, calculateFizzBuzzPop } from "./index";
+import {
+  calculateDivisorRules,
+  FizzBuzzDivisorRules,
+  FizzBuzzPopDivisorRules,
+} from "./index";
 
 describe("When supplied with max number to count to", () => {
   it.each([[1], [2], [5]])(
     "should print that many numbers, %s in this case",
     (number) => {
-      const result = calculateFizzBuzz(number);
+      const result = calculateDivisorRules(number, FizzBuzzDivisorRules);
       expect(result.length).toBe(number);
     }
   );
@@ -12,15 +16,15 @@ describe("When supplied with max number to count to", () => {
 
 describe("When using FizzBuzz", () => {
   it("Should print Fizz for numbers divisible by 3", () => {
-    const result = calculateFizzBuzz(3);
+    const result = calculateDivisorRules(3, FizzBuzzDivisorRules);
     expect(result).toStrictEqual(["1", "2", "Fizz"]);
   });
   it("Should print Buzz for numbers divisible by 5", () => {
-    const result = calculateFizzBuzz(5);
+    const result = calculateDivisorRules(5, FizzBuzzDivisorRules);
     expect(result).toStrictEqual(["1", "2", "Fizz", "4", "Buzz"]);
   });
   it("Should print FizzBuzz for numbers divisible by both 3 and 5", () => {
-    const result = calculateFizzBuzz(20);
+    const result = calculateDivisorRules(20, FizzBuzzDivisorRules);
     expect(result).toStrictEqual([
       "1",
       "2",
@@ -47,15 +51,15 @@ describe("When using FizzBuzz", () => {
 });
 describe("When using FizzBuzzPop", () => {
   it("Should print Fizz for numbers divisible by 3", () => {
-    const result = calculateFizzBuzzPop(3);
+    const result = calculateDivisorRules(3, FizzBuzzPopDivisorRules);
     expect(result).toStrictEqual(["1", "2", "Fizz"]);
   });
   it("Should print Buzz for numbers divisible by 5", () => {
-    const result = calculateFizzBuzzPop(5);
+    const result = calculateDivisorRules(5, FizzBuzzPopDivisorRules);
     expect(result).toStrictEqual(["1", "2", "Fizz", "4", "Buzz"]);
   });
   it("Should print Pop for numbers divisible by 7", () => {
-    const result = calculateFizzBuzzPop(7);
+    const result = calculateDivisorRules(7, FizzBuzzPopDivisorRules);
     expect(result).toStrictEqual([
       "1",
       "2",
@@ -67,7 +71,7 @@ describe("When using FizzBuzzPop", () => {
     ]);
   });
   it("Should print FizzBuzz for numbers divisible by both 3 and 5", () => {
-    const result = calculateFizzBuzzPop(20);
+    const result = calculateDivisorRules(20, FizzBuzzPopDivisorRules);
     expect(result).toStrictEqual([
       "1",
       "2",
