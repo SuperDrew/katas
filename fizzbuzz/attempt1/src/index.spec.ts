@@ -112,6 +112,9 @@ function calculateWithRules(
     for (const rule of rules) {
       result = rule.applyRule(i, result);
     }
+    if (result === "") {
+      result = i.toString();
+    }
     results.push(result);
   }
   return results;
@@ -121,5 +124,16 @@ describe("When using number containing rules", () => {
   it("Should print Fizz for numbers including 3", () => {
     const result = calculateWithRules(1, 3, [new ContainsRule(3, "Fizz")]);
     expect(result).toStrictEqual(["1", "2", "Fizz"]);
+  });
+  it("Should print Buzz for numbers including 5", () => {
+    const result = calculateWithRules(4, 5, [new ContainsRule(5, "Buzz")]);
+    expect(result).toStrictEqual(["4", "Buzz"]);
+  });
+  it("Should print FizzBuzz for numbers including 3 and 5", () => {
+    const result = calculateWithRules(34, 35, [
+      new ContainsRule(3, "Fizz"),
+      new ContainsRule(5, "Buzz"),
+    ]);
+    expect(result).toStrictEqual(["Fizz", "FizzBuzz"]);
   });
 });

@@ -15,12 +15,15 @@ class isDivisibleRule implements IRule {
 }
 
 export class ContainsRule implements IRule {
-  constructor(private number: number, private replacementString: string) {}
+  constructor(
+    private numberToLookFor: number,
+    private replacementString: string
+  ) {}
   applyRule(position: number, targetString: string): string {
-    if (position.toString().includes(this.number.toString())) {
+    if (position.toString().includes(this.numberToLookFor.toString())) {
       targetString += this.replacementString;
       return targetString;
-    } else return position.toString();
+    } else return targetString;
   }
 }
 
