@@ -1,7 +1,9 @@
 import {
   calculateDivisorRules,
+  ContainsRule,
   FizzBuzzDivisorRules,
   FizzBuzzPopDivisorRules,
+  IRule,
 } from "./index";
 
 describe("When supplied with max number to count to", () => {
@@ -49,6 +51,7 @@ describe("When using FizzBuzz", () => {
     ]);
   });
 });
+
 describe("When using FizzBuzzPop", () => {
   it("Should print Fizz for numbers divisible by 3", () => {
     const result = calculateDivisorRules(3, FizzBuzzPopDivisorRules);
@@ -95,5 +98,28 @@ describe("When using FizzBuzzPop", () => {
       "Buzz",
       "FizzPop",
     ]);
+  });
+});
+
+function calculateWithRules(
+  startIndex: number,
+  endIndex: number,
+  rules: IRule[]
+): string[] {
+  const results = [];
+  for (let i = startIndex; i <= endIndex; i++) {
+    let result = "";
+    for (const rule of rules) {
+      result = rule.applyRule(i, result);
+    }
+    results.push(result);
+  }
+  return results;
+}
+
+describe("When using number containing rules", () => {
+  it("Should print Fizz for numbers including 3", () => {
+    const result = calculateWithRules(1, 3, [new ContainsRule(3, "Fizz")]);
+    expect(result).toStrictEqual(["1", "2", "Fizz"]);
   });
 });

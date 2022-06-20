@@ -1,16 +1,26 @@
-interface IRule {
-  applyRule(position: number, input: string): string;
+export interface IRule {
+  applyRule(position: number, targetString: string): string;
 }
 
 class isDivisibleRule implements IRule {
   constructor(private divisorLookup: Record<number, string>) {}
-  applyRule(position: number, input: string): string {
+  applyRule(position: number, targetString: string): string {
     for (const lookupKey in this.divisorLookup) {
       if (position % Number(lookupKey) === 0) {
-        input += this.divisorLookup[lookupKey];
+        targetString += this.divisorLookup[lookupKey];
       }
     }
-    return input;
+    return targetString;
+  }
+}
+
+export class ContainsRule implements IRule {
+  constructor(private number: number, private replacementString: string) {}
+  applyRule(position: number, targetString: string): string {
+    if (position.toString().includes(this.number.toString())) {
+      targetString += this.replacementString;
+      return targetString;
+    } else return position.toString();
   }
 }
 
