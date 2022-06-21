@@ -2,7 +2,7 @@ export interface IRule {
   applyRule(position: number, targetString: string): string;
 }
 
-class isDivisibleRule implements IRule {
+export class isDivisibleRule implements IRule {
   constructor(private divisorLookup: Record<number, string>) {}
   applyRule(position: number, targetString: string): string {
     for (const lookupKey in this.divisorLookup) {
@@ -37,20 +37,3 @@ export const FizzBuzzPopDivisorRules: Record<number, string> = {
   5: "Buzz",
   7: "Pop",
 };
-
-export function calculateDivisorRules(
-  number: number,
-  divisorLookup: Record<number, string>
-): string[] {
-  const result = [];
-  const fizzBuzzDivisibleRule = new isDivisibleRule(divisorLookup);
-  for (let i = 1; i <= number; i++) {
-    let stringToAdd = "";
-    stringToAdd += fizzBuzzDivisibleRule.applyRule(i, stringToAdd);
-    if (stringToAdd === "") {
-      stringToAdd = i.toString();
-    }
-    result.push(stringToAdd);
-  }
-  return result;
-}
