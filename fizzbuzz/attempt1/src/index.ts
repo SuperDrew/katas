@@ -37,3 +37,22 @@ export const FizzBuzzPopDivisorRules: Record<number, string> = {
   5: "Buzz",
   7: "Pop",
 };
+
+export function calculateWithRules(
+  startIndex: number,
+  endIndex: number,
+  rules: IRule[]
+): string[] {
+  const results = [];
+  for (let i = startIndex; i <= endIndex; i++) {
+    let result = "";
+    for (const rule of rules) {
+      result = rule.applyRule(i, result);
+    }
+    if (result === "") {
+      result = i.toString();
+    }
+    results.push(result);
+  }
+  return results;
+}

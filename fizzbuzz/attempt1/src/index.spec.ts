@@ -1,8 +1,8 @@
 import {
+  calculateWithRules,
   ContainsRule,
   FizzBuzzDivisorRules,
   FizzBuzzPopDivisorRules,
-  IRule,
   isDivisibleRule,
 } from "./index";
 
@@ -116,25 +116,6 @@ describe("When using FizzBuzzPop", () => {
     ]);
   });
 });
-
-function calculateWithRules(
-  startIndex: number,
-  endIndex: number,
-  rules: IRule[]
-): string[] {
-  const results = [];
-  for (let i = startIndex; i <= endIndex; i++) {
-    let result = "";
-    for (const rule of rules) {
-      result = rule.applyRule(i, result);
-    }
-    if (result === "") {
-      result = i.toString();
-    }
-    results.push(result);
-  }
-  return results;
-}
 
 describe("When using number containing rules", () => {
   it("Should print Fizz for numbers including 3", () => {
