@@ -2,7 +2,7 @@ export interface IRule {
   applyRule(position: number, targetString: string): string;
 }
 
-export class isDivisibleRule implements IRule {
+export class divisibleRule implements IRule {
   constructor(private divisorLookup: Record<number, string>) {}
   applyRule(position: number, targetString: string): string {
     for (const lookupKey in this.divisorLookup) {
