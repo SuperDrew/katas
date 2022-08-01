@@ -1,3 +1,7 @@
-export function add(a: number, b: number) {
-  return a + b;
-}
+export const isLeapYear = (year: number) => {
+  if (year % 400 === 0) {
+    return true;
+  } else if (year % 4 === 0 && year % 100 !== 0) {
+    return true;
+  } else return false;
+};
