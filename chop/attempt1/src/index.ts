@@ -3,5 +3,6 @@ const isArrayEmpty = (searchArray: number[]) =>
 
 export const chop = (searchTarget: number, searchArray: number[]) => {
   if (isArrayEmpty(searchArray)) return -1;
-  return 0;
+  if (searchArray.length === 1 && searchArray[0] === searchTarget) return 0;
+  return -1;
 };
