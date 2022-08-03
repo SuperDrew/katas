@@ -3,11 +3,8 @@ const isDivisibleBy = (number: number, divisor: number) => {
 };
 
 export const isLeapYear = (year: number) => {
-  if (
+  return (
     isDivisibleBy(year, 400) ||
     (isDivisibleBy(year, 4) && !isDivisibleBy(year, 100))
-  ) {
-    return true;
-  }
-  return false;
+  );
 };
