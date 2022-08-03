@@ -1,3 +1,3 @@
-export function add(a: number, b: number) {
-  return a + b;
-}
+export const chop = (searchTarget: number, searchArray: number[]) => {
+  return -1;
+};
