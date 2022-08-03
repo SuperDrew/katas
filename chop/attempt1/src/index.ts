@@ -1,3 +1,4 @@
 export const chop = (searchTarget: number, searchArray: number[]) => {
-  return -1;
+  if (!Array.isArray(searchArray) || searchArray.length === 0) return -1;
+  return 0;
 };
