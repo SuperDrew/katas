@@ -10,14 +10,32 @@ const searchSubSet = (
   endIndex: number,
   searchArray: number[]
 ): number => {
-  const middleOfSubset = getMiddleOfSubset(endIndex, startIndex);
-  const middleSubsetValue = searchArray[middleOfSubset];
-  if (middleSubsetValue === searchTarget) return middleOfSubset;
+  const middleOfSubsetIndex = getMiddleOfSubset(endIndex, startIndex);
+  const middleSubsetValue = searchArray[middleOfSubsetIndex];
+  if (middleSubsetValue === searchTarget) return middleOfSubsetIndex;
   if (middleSubsetValue < searchTarget) {
-    return searchSubSet(searchTarget, middleOfSubset, endIndex, searchArray);
+    if (middleOfSubsetIndex === endIndex - 1) {
+      if (searchArray[endIndex] === searchTarget) return endIndex;
+      else return -1;
+    }
+    return searchSubSet(
+      searchTarget,
+      middleOfSubsetIndex,
+      endIndex,
+      searchArray
+    );
   }
   if (middleSubsetValue > searchTarget) {
-    return searchSubSet(searchTarget, startIndex, middleOfSubset, searchArray);
+    if (middleOfSubsetIndex === 1) {
+      if (searchArray[0] === searchTarget) return 0;
+      else return -1;
+    }
+    return searchSubSet(
+      searchTarget,
+      startIndex,
+      middleOfSubsetIndex,
+      searchArray
+    );
   }
   return -1;
 };
