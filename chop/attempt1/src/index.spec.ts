@@ -1,4 +1,4 @@
-import { chop, getMiddleOfSubset } from ".";
+import { chop, getMiddleOfSubsetIndex } from ".";
 
 describe("Binary Chop", () => {
   describe("Empty and Single value arrays", () => {
@@ -62,15 +62,15 @@ describe("Binary Chop", () => {
 
 describe("Finding the middle of the subset", () => {
   it("should return 1 for 3 elements", () => {
-    expect(getMiddleOfSubset(2, 0)).toBe(1);
+    expect(getMiddleOfSubsetIndex(2, 0)).toBe(1);
   });
   it("should return 0 for 1 elements", () => {
-    expect(getMiddleOfSubset(0, 0)).toBe(0);
+    expect(getMiddleOfSubsetIndex(0, 0)).toBe(0);
   });
   it("should return 1 for 4 elements", () => {
-    expect(getMiddleOfSubset(3, 0)).toBe(1);
+    expect(getMiddleOfSubsetIndex(3, 0)).toBe(1);
   });
   it("should return 2 for 5 elements", () => {
-    expect(getMiddleOfSubset(4, 0)).toBe(2);
+    expect(getMiddleOfSubsetIndex(4, 0)).toBe(2);
   });
 });

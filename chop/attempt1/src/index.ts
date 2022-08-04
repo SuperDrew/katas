@@ -1,7 +1,7 @@
 const isArrayEmpty = (searchArray: number[]) =>
   !Array.isArray(searchArray) || searchArray.length === 0;
 
-export const getMiddleOfSubset = (endIndex: number, startIndex: number) =>
+export const getMiddleOfSubsetIndex = (endIndex: number, startIndex: number) =>
   Math.floor((endIndex - startIndex) / 2) + startIndex;
 
 const searchSubSet = (
@@ -10,7 +10,7 @@ const searchSubSet = (
   endIndex: number,
   searchArray: number[]
 ): number => {
-  const middleOfSubsetIndex = getMiddleOfSubset(endIndex, startIndex);
+  const middleOfSubsetIndex = getMiddleOfSubsetIndex(endIndex, startIndex);
   const middleSubsetValue = searchArray[middleOfSubsetIndex];
   if (middleSubsetValue === searchTarget) return middleOfSubsetIndex;
   if (middleSubsetValue < searchTarget) {
