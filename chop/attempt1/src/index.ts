@@ -29,5 +29,4 @@ export const chop = (searchTarget: number, searchArray: number[]) => {
     else return -1;
   }
   return searchSubSet(searchTarget, 0, searchArray.length - 1, searchArray);
-  return -1;
 };
