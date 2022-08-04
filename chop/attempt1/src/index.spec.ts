@@ -31,8 +31,27 @@ describe("Binary Chop", () => {
     );
   });
 
+  describe("Arrays with 4 values", () => {
+    it.each([
+      [0, 1, [1, 3, 5, 7]],
+      [1, 3, [1, 3, 5, 7]],
+      [2, 5, [1, 3, 5, 7]],
+      [3, 7, [1, 3, 5, 7]],
+      [-1, 0, [1, 3, 5, 7]],
+      [-1, 2, [1, 3, 5, 7]],
+      [-1, 4, [1, 3, 5, 7]],
+      [-1, 6, [1, 3, 5, 7]],
+      [-1, 8, [1, 3, 5, 7]],
+    ])(
+      "it should expect %s, when searching for %s in array %s",
+      (expectedResponse, searchTarget, searchArray) => {
+        expect(chop(searchTarget, searchArray)).toBe(expectedResponse);
+      }
+    );
+  });
+
   describe("DEBUG: ", () => {
-    it.each([[0, 1, [1, 3, 5]]])(
+    it.each([[2, 5, [1, 3, 5]]])(
       "DEBUG: it should expect %s, when searching for %s in array %s",
       (expectedResponse, searchTarget, searchArray) => {
         expect(chop(searchTarget, searchArray)).toBe(expectedResponse);
