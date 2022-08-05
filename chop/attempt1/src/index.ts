@@ -26,7 +26,7 @@ const searchSubSet = (
     );
   }
   if (middleSubsetValue > searchTarget) {
-    if (middleOfSubsetIndex === 1) {
+    if (middleOfSubsetIndex === 1 || middleOfSubsetIndex === 0) {
       if (searchArray[0] === searchTarget) return 0;
       else return -1;
     }
