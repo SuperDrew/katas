@@ -39,7 +39,7 @@ const searchSubSet = (
   }
 };
 
-export const chop = (searchTarget: number, searchArray: number[]) => {
+export const chop = (searchTarget: number, searchArray: number[]): number => {
   if (isArrayEmpty(searchArray)) return -1;
   if (searchArray.length === 1) {
     if (searchArray[0] === searchTarget) return 0;
