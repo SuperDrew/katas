@@ -68,7 +68,7 @@ describe("Binary Chop", () => {
   });
 
   describe("DEBUG: ", () => {
-    it.each([[-1, 0, [1, 3]]])(
+    it.each([[1, 3, [1, 3]]])(
       "DEBUG: it should expect %s, when searching for %s in array %s",
       (expectedResponse, searchTarget, searchArray) => {
         expect(chop(searchTarget, searchArray)).toBe(expectedResponse);
@@ -114,7 +114,7 @@ describe("Property based tests", () => {
         sortedArray.splice(indexToRemove, 1);
         expect(chop(searchTarget, sortedArray)).toBe(-1);
       }),
-      { verbose: true, seed: -68503183, path: "3", endOnFailure: true }
+      { verbose: true }
     );
   });
 });
