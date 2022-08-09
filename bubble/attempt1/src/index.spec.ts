@@ -11,9 +11,11 @@ describe("bubble", () => {
 
   describe("array with 1 elements", () => {
     it("should return the same array", () => {
-      fc.property(fc.integer(), (num) => {
-        expect(bubble([num])).toStrictEqual([num]);
-      });
+      fc.assert(
+        fc.property(fc.integer(), (num) => {
+          expect(bubble([num])).toStrictEqual([num]);
+        })
+      );
     });
   });
 
