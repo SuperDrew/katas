@@ -121,7 +121,7 @@ describe("Property based tests", () => {
       fc.property(
         fc.integer({ min: 2, max: 1000 }).chain((arrayLength) =>
           fc.tuple(
-            fc.integer({ min: 0, max: arrayLength }),
+            fc.integer({ min: 0, max: arrayLength - 1 }),
             fc.uniqueArray(fc.integer(), {
               minLength: arrayLength,
               maxLength: arrayLength,
