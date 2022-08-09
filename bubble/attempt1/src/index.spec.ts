@@ -50,4 +50,18 @@ describe("bubble", () => {
       });
     });
   });
+
+  describe("array with 3 elements", () => {
+    it("Should return a sorted array", () => {
+      fc.assert(
+        fc.property(
+          fc.uniqueArray(fc.integer(), { minLength: 3, maxLength: 3 }),
+          (data) => {
+            const sortedData = [...data].sort((a, b) => a - b);
+            expect(bubble(data)).toStrictEqual(sortedData);
+          }
+        )
+      );
+    });
+  });
 });
