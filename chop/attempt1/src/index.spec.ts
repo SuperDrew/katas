@@ -95,12 +95,23 @@ describe("Finding the middle of the subset", () => {
 describe("Property based tests", () => {
   it("should return the index of a number in a sorted array", () => {
     fc.assert(
-      fc.property(fc.uniqueArray(fc.integer(), { minLength: 1 }), (data) => {
-        const sortedArray = data.sort((a, b) => a - b);
-        const expectedIndex = Math.floor(Math.random() * sortedArray.length);
-        const searchTarget = sortedArray[expectedIndex];
-        expect(chop(searchTarget, sortedArray)).toBe(expectedIndex);
-      }),
+      fc.property(
+        fc.integer({ min: 1, max: 1000 }).chain((arrayLength) =>
+          fc.tuple(
+            fc.integer({ min: 0, max: arrayLength - 1 }),
+            fc.uniqueArray(fc.integer(), {
+              minLength: arrayLength,
+              maxLength: arrayLength,
+            })
+          )
+        ),
+        (data) => {
+          const expectedIndex = data[0];
+          const sortedArray = data[1].sort((a, b) => a - b);
+          const searchTarget = sortedArray[expectedIndex];
+          expect(chop(searchTarget, sortedArray)).toBe(expectedIndex);
+        }
+      ),
       { verbose: true }
     );
   });
