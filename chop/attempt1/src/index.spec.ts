@@ -95,7 +95,7 @@ describe("Finding the middle of the subset", () => {
 describe("Property based tests", () => {
   it("should return the index of a number in a sorted array", () => {
     fc.assert(
-      fc.property(fc.array(fc.integer(), { minLength: 1 }), (data) => {
+      fc.property(fc.uniqueArray(fc.integer(), { minLength: 1 }), (data) => {
         const sortedArray = data.sort((a, b) => a - b);
         const expectedIndex = Math.floor(Math.random() * sortedArray.length);
         const searchTarget = sortedArray[expectedIndex];
