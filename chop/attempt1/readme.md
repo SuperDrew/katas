@@ -37,3 +37,7 @@ end
 
 ## Reference
 Taken from http://codekata.com/kata/kata02-karate-chop/
+
+## Things to try
+* instead of slicing and passing a copy modify the original array.
+* mutate to see what's missed

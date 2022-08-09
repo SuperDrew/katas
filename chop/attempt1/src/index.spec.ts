@@ -107,13 +107,24 @@ describe("Property based tests", () => {
 
   it("should return -1 for a number not in a sorted array", () => {
     fc.assert(
-      fc.property(fc.uniqueArray(fc.integer(), { minLength: 2 }), (data) => {
-        const sortedArray = data.sort((a, b) => a - b);
-        const indexToRemove = Math.floor(Math.random() * sortedArray.length);
-        const searchTarget = sortedArray[indexToRemove];
-        sortedArray.splice(indexToRemove, 1);
-        expect(chop(searchTarget, sortedArray)).toBe(-1);
-      }),
+      fc.property(
+        fc.integer({ min: 2, max: 1000 }).chain((arrayLength) =>
+          fc.tuple(
+            fc.integer({ min: 0, max: arrayLength }),
+            fc.uniqueArray(fc.integer(), {
+              minLength: arrayLength,
+              maxLength: arrayLength,
+            })
+          )
+        ),
+        (data) => {
+          const indexToRemove = data[0];
+          const sortedArray = data[1].sort((a, b) => a - b);
+          const searchTarget = sortedArray[indexToRemove];
+          sortedArray.splice(indexToRemove, 1);
+          expect(chop(searchTarget, sortedArray)).toBe(-1);
+        }
+      ),
       { verbose: true }
     );
   });
