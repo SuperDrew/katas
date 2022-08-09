@@ -1,4 +1,4 @@
-import { add } from ".";
+import { add } from "./index";
 
 describe("When adding two numbers", () => {
   it("should, like, work", () => {
