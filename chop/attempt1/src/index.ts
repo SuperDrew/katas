@@ -8,30 +8,26 @@ export const getMiddleOfSubsetIndex = (
 
 const searchSubSet = (
   searchTarget: number,
-  startIndex: number,
-  endIndex: number,
+  indexOffset: number,
   searchArray: number[]
 ): number => {
-  const middleOfSubsetIndex = getMiddleOfSubsetIndex(endIndex, startIndex);
+  const endIndex = searchArray.length - 1;
+  const middleOfSubsetIndex = getMiddleOfSubsetIndex(endIndex, 0);
   const middleSubsetValue = searchArray[middleOfSubsetIndex];
-  if (middleSubsetValue === searchTarget) return middleOfSubsetIndex;
-  if (startIndex === endIndex) return -1;
+  if (middleSubsetValue === searchTarget)
+    return middleOfSubsetIndex + indexOffset;
   if (middleSubsetValue < searchTarget) {
-    //check if the value is between the closest two indexes to prevent infinite loop
-    if (searchTarget < searchArray[middleOfSubsetIndex + 1]) return -1;
     return searchSubSet(
       searchTarget,
-      middleOfSubsetIndex + 1,
-      endIndex,
-      searchArray
+      indexOffset + middleOfSubsetIndex + 1,
+      searchArray.slice(middleOfSubsetIndex + 1)
     );
   }
   if (middleSubsetValue > searchTarget) {
     return searchSubSet(
       searchTarget,
-      startIndex,
-      middleOfSubsetIndex - 1,
-      searchArray
+      indexOffset,
+      searchArray.slice(0, middleOfSubsetIndex)
     );
   }
   return -1;
@@ -43,5 +39,5 @@ export const chop = (searchTarget: number, searchArray: number[]): number => {
     if (searchArray[0] === searchTarget) return 0;
     else return -1;
   }
-  return searchSubSet(searchTarget, 0, searchArray.length - 1, searchArray);
+  return searchSubSet(searchTarget, 0, searchArray);
 };
