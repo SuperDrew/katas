@@ -28,7 +28,7 @@ describe("bubble", () => {
               .tuple(fc.integer(), fc.integer())
               .map(([a, b]) => (a <= b ? [a, b] : [b, a])),
             ([a, b]) => {
-              expect([a, b]).toStrictEqual([a, b]);
+              expect(bubble([a, b])).toStrictEqual([a, b]);
             }
           )
         );
