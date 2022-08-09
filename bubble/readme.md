@@ -31,7 +31,7 @@ The algorithm needs one whole pass without any swap to know it is sorted.
 
 ## Illustration:
 
-![img.png](attempt1/img.png)
+![img.png](img.png)
 
 ## Reference
 Taken from https://www.geeksforgeeks.org/bubble-sort/
