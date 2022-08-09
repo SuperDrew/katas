@@ -1,18 +1,15 @@
 const isArrayEmpty = (searchArray: number[]): boolean =>
   !Array.isArray(searchArray) || searchArray.length === 0;
 
-export const getMiddleOfSubsetIndex = (
-  startIndex: number,
-  endIndex: number
-): number => Math.floor((endIndex - startIndex) / 2) + startIndex;
+export const getMiddleIndexOfArray = (array: number[]): number =>
+  Math.floor((array.length - 1) / 2);
 
 const searchSubSet = (
   searchTarget: number,
   indexOffset: number,
   searchArray: number[]
 ): number => {
-  const endIndex = searchArray.length - 1;
-  const middleOfSubsetIndex = getMiddleOfSubsetIndex(0, endIndex);
+  const middleOfSubsetIndex = getMiddleIndexOfArray(searchArray);
   const middleSubsetValue = searchArray[middleOfSubsetIndex];
   if (middleSubsetValue === searchTarget)
     return middleOfSubsetIndex + indexOffset;

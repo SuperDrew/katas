@@ -1,6 +1,6 @@
 import * as fc from "fast-check";
 
-import { chop, getMiddleOfSubsetIndex } from ".";
+import { chop, getMiddleIndexOfArray } from ".";
 
 describe("Binary Chop", () => {
   describe("Empty and Single value arrays", () => {
@@ -68,7 +68,7 @@ describe("Binary Chop", () => {
   });
 
   describe("DEBUG: ", () => {
-    it.each([[1, 3, [1, 3]]])(
+    it.each([[3, 7, [1, 3, 5, 7]]])(
       "DEBUG: it should expect %s, when searching for %s in array %s",
       (expectedResponse, searchTarget, searchArray) => {
         expect(chop(searchTarget, searchArray)).toBe(expectedResponse);
@@ -79,16 +79,16 @@ describe("Binary Chop", () => {
 
 describe("Finding the middle of the subset", () => {
   it("should return 1 for 3 elements", () => {
-    expect(getMiddleOfSubsetIndex(2, 0)).toBe(1);
+    expect(getMiddleIndexOfArray([1, 2, 3])).toBe(1);
   });
   it("should return 0 for 1 elements", () => {
-    expect(getMiddleOfSubsetIndex(0, 0)).toBe(0);
+    expect(getMiddleIndexOfArray([0])).toBe(0);
   });
   it("should return 1 for 4 elements", () => {
-    expect(getMiddleOfSubsetIndex(3, 0)).toBe(1);
+    expect(getMiddleIndexOfArray([1, 2, 3, 4])).toBe(1);
   });
   it("should return 2 for 5 elements", () => {
-    expect(getMiddleOfSubsetIndex(4, 0)).toBe(2);
+    expect(getMiddleIndexOfArray([1, 2, 3, 4, 5])).toBe(2);
   });
 });
 
