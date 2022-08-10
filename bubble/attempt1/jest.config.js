@@ -5,5 +5,4 @@ module.exports = {
   },
   collectCoverage: true,
   collectCoverageFrom: ["src/**/*.ts", "!**/*.d.ts"],
-  testEnvironment: "node",
 };
