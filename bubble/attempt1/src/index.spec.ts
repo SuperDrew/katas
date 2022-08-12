@@ -66,4 +66,20 @@ describe("bubble", () => {
       );
     });
   });
+
+  describe("array with up to n elements", () => {
+    it("Should return a sorted array", () => {
+      fc.assert(
+        fc.property(
+          fc.uniqueArray(fc.integer(), { minLength: 1, maxLength: 10000 }),
+          (data) => {
+            const sortedData = [...data].sort((a, b) => a - b);
+            const actual = bubble(data);
+            expect(actual).toStrictEqual(sortedData);
+          }
+        ),
+        { verbose: true }
+      );
+    });
+  });
 });
