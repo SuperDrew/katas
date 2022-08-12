@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{ts,tsx}'",
-    "test": "jest"
+    "test": "jest",
+    "test:mutate": "stryker run"
   },
   "license": "MIT",
   "devDependencies": {
     "@cazoo/eslint-plugin-eslint": "^1.0.2",
+    "@stryker-mutator/core": "^6.1.2",
+    "@stryker-mutator/jest-runner": "^6.1.2",
+    "@stryker-mutator/typescript-checker": "^6.1.2",
     "@types/jest": "^28.1.6",
     "eslint": "^7.32.0",
     "fast-check": "^3.1.1",
