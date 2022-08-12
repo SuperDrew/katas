@@ -1,5 +1,4 @@
 export const bubble = (data: number[]): number[] => {
-  if (data.length === 0) return data;
   let done = false;
   while (!done) {
     let swappedAnElement = false;
