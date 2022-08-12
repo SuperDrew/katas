@@ -84,3 +84,4 @@ cdk.out/
 
 # stryker temp files
 .stryker-tmp
+/reports/**
