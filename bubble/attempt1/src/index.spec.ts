@@ -1,6 +1,6 @@
 import * as fc from "fast-check";
 
-import { bubble } from "./index";
+import { bubble } from ".";
 
 describe("bubble", () => {
   describe("array with no elements", () => {
@@ -58,9 +58,11 @@ describe("bubble", () => {
           fc.uniqueArray(fc.integer(), { minLength: 3, maxLength: 3 }),
           (data) => {
             const sortedData = [...data].sort((a, b) => a - b);
-            expect(bubble(data)).toStrictEqual(sortedData);
+            const actual = bubble(data);
+            expect(actual).toStrictEqual(sortedData);
           }
-        )
+        ),
+        { verbose: true }
       );
     });
   });
